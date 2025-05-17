@@ -10,5 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_17_152602) do
+  create_table "buildings", force: :cascade do |t|
+    t.decimal "total_residential_area"
+    t.decimal "total_usable_area"
+    t.decimal "plot_area"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "housing_units", force: :cascade do |t|
+    t.decimal "residential_area"
+    t.decimal "usable_area"
+    t.decimal "total_area_share"
+    t.integer "building_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_housing_units_on_building_id"
+  end
+
+  add_foreign_key "housing_units", "buildings"
 end
