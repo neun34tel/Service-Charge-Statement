@@ -1,0 +1,2 @@
+module HousingUnitsHelper
+end

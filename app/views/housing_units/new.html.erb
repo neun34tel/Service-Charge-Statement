@@ -1,0 +1,11 @@
+<% content_for :title, "New housing unit" %>
+
+<h1>New housing unit</h1>
+
+<%= render "form", housing_unit: @housing_unit %>
+
+<br>
+
+<div>
+  <%= link_to "Back to housing units", housing_units_path %>
+</div>

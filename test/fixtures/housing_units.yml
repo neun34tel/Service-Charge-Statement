@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  residential_area: 9.99
+  usable_area: 9.99
+  total_area_share: 9.99
+  building: one
+
+two:
+  residential_area: 9.99
+  usable_area: 9.99
+  total_area_share: 9.99
+  building: two
