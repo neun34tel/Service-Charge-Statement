@@ -3,8 +3,8 @@
 <%= render @housing_unit %>
 
 <div>
-  <%= link_to "Edit this housing unit", edit_housing_unit_path(@housing_unit) %> |
-  <%= link_to "Back to housing units", housing_units_path %>
+  <%= link_to "Edit this housing unit", edit_building_housing_unit_path(@building, @housing_unit) %> |
+  <%= link_to "Back to housing units", building_housing_units_path(@building) %>
 
-  <%= button_to "Destroy this housing unit", @housing_unit, method: :delete %>
+  <%= button_to "Destroy this housing unit", {building: @building, housing_unit: @housing_unit}, method: :delete %>
 </div>

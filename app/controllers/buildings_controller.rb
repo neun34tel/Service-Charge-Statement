@@ -1,12 +1,12 @@
 class BuildingsController < ApplicationController
   before_action :set_building, only: %i[ show edit update destroy ]
 
-  # GET /buildings or /buildings.json
+  # GET /buildings
   def index
     @buildings = Building.all
   end
 
-  # GET /buildings/1 or /buildings/1.json
+  # GET /buildings/1
   def show
   end
 
@@ -19,42 +19,31 @@ class BuildingsController < ApplicationController
   def edit
   end
 
-  # POST /buildings or /buildings.json
+  # POST /buildings or
   def create
     @building = Building.new(building_params)
 
-    respond_to do |format|
-      if @building.save
-        format.html { redirect_to @building, notice: "Building was successfully created." }
-        format.json { render :show, status: :created, location: @building }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @building.errors, status: :unprocessable_entity }
-      end
+    if @building.save
+      redirect_to @building, notice: "Building was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /buildings/1 or /buildings/1.json
+  # PATCH/PUT /buildings/1
   def update
-    respond_to do |format|
-      if @building.update(building_params)
-        format.html { redirect_to @building, notice: "Building was successfully updated." }
-        format.json { render :show, status: :ok, location: @building }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @building.errors, status: :unprocessable_entity }
-      end
+    if @building.update(building_params)
+      redirect_to @building, notice: "Building was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /buildings/1 or /buildings/1.json
+  # DELETE /buildings/1
   def destroy
     @building.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to buildings_path, status: :see_other, notice: "Building was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to buildings_path, status: :see_other, notice: "Building was successfully destroyed."
   end
 
   private

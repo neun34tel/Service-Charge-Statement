@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
   <div>
     <%= form.label :residential_area, style: "display: block" %>
     <%= form.text_field :residential_area %>
@@ -24,11 +29,6 @@
   <div>
     <%= form.label :total_area_share, style: "display: block" %>
     <%= form.text_field :total_area_share %>
-  </div>
-
-  <div>
-    <%= form.label :building_id, style: "display: block" %>
-    <%= form.text_field :building_id %>
   </div>
 
   <div>

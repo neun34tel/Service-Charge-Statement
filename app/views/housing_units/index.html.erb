@@ -8,9 +8,9 @@
   <% @housing_units.each do |housing_unit| %>
     <%= render housing_unit %>
     <p>
-      <%= link_to "Show this housing unit", housing_unit %>
+      <%= link_to "Show this housing unit", building_housing_unit_path(@building, housing_unit) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New housing unit", new_building_housing_unit_path %>
+<%= link_to "New housing unit", new_building_housing_unit_path(@building) %>

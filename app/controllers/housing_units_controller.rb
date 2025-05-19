@@ -2,60 +2,49 @@ class HousingUnitsController < ApplicationController
   before_action :set_housing_unit, only: %i[ show edit update destroy ]
   before_action :set_building
 
-  # GET /housing_units or /housing_units.json
+  # GET /housing_units
   def index
-    @housing_units = HousingUnit.all
+    @housing_units = @building.housing_units.all
   end
 
-  # GET /housing_units/1 or /housing_units/1.json
+  # GET /housing_units/1
   def show
   end
 
   # GET /housing_units/new
   def new
-    @housing_unit = HousingUnit.new
+    @housing_unit = @building.housing_units.new
   end
 
   # GET /housing_units/1/edit
   def edit
   end
 
-  # POST /housing_units or /housing_units.json
+  # POST /housing_units
   def create
-    @housing_unit = HousingUnit.new(housing_unit_params)
+    @housing_unit = @building.housing_units.new(housing_unit_params)
 
-    respond_to do |format|
-      if @housing_unit.save
-        format.html { redirect_to @housing_unit, notice: "Housing unit was successfully created." }
-        format.json { render :show, status: :created, location: @housing_unit }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @housing_unit.errors, status: :unprocessable_entity }
-      end
+    if @housing_unit.save
+      redirect_to building_housing_units_path(@building), notice: "Housing unit was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /housing_units/1 or /housing_units/1.json
+  # PATCH/PUT /housing_units/1
   def update
-    respond_to do |format|
-      if @housing_unit.update(housing_unit_params)
-        format.html { redirect_to @housing_unit, notice: "Housing unit was successfully updated." }
-        format.json { render :show, status: :ok, location: @housing_unit }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @housing_unit.errors, status: :unprocessable_entity }
-      end
+    if @housing_unit.update(housing_unit_params)
+      redirect_to building_housing_unit_path, notice: "Housing unit was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /housing_units/1 or /housing_units/1.json
+  # DELETE /housing_units/1
   def destroy
     @housing_unit.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to housing_units_path, status: :see_other, notice: "Housing unit was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to building_housing_units_path, status: :see_other, notice: "Housing unit was successfully destroyed."
   end
 
   private
@@ -71,6 +60,6 @@ class HousingUnitsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def housing_unit_params
-    params.expect(housing_unit: [ :residential_area, :usable_area, :total_area_share, :building_id ])
+    params.expect(housing_unit: [ :residential_area, :usable_area, :total_area_share, :description ])
   end
 end
