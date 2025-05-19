@@ -1,5 +1,6 @@
 class HousingUnitsController < ApplicationController
   before_action :set_housing_unit, only: %i[ show edit update destroy ]
+  before_action :set_building
 
   # GET /housing_units or /housing_units.json
   def index
@@ -58,13 +59,18 @@ class HousingUnitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_housing_unit
-      @housing_unit = HousingUnit.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def housing_unit_params
-      params.expect(housing_unit: [ :residential_area, :usable_area, :total_area_share, :building_id ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_building
+    @building = Building.find(params.expect(:building_id))
+  end
+
+  def set_housing_unit
+    @housing_unit = HousingUnit.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def housing_unit_params
+    params.expect(housing_unit: [ :residential_area, :usable_area, :total_area_share, :building_id ])
+  end
 end
