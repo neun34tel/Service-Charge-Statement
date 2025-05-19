@@ -65,6 +65,7 @@ class BuildingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def building_params
-      params.expect(building: [ :total_residential_area, :total_usable_area, :plot_area ])
+      params.expect(building: [ :total_residential_area, :total_usable_area, :plot_area, :name, :street, :house_number,\
+                               :zip_code, :city, :state, :country ])
     end
 end
