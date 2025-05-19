@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_17_152602) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_19_040721) do
   create_table "buildings", force: :cascade do |t|
     t.decimal "total_residential_area"
     t.decimal "total_usable_area"
     t.decimal "plot_area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "street"
+    t.string "house_number"
+    t.string "zip_code"
+    t.string "city"
+    t.string "state"
+    t.string "country"
   end
 
   create_table "housing_units", force: :cascade do |t|
