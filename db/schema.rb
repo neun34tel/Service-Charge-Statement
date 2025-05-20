@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_19_045044) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_20_014121) do
   create_table "buildings", force: :cascade do |t|
     t.decimal "total_residential_area"
     t.decimal "total_usable_area"
@@ -34,6 +34,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_19_045044) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.decimal "factor"
     t.index ["building_id"], name: "index_housing_units_on_building_id"
   end
 
